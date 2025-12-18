@@ -5,8 +5,9 @@ import './App.css'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import ListRender from './components/ListRenderComponent'
 import NavBar from './components/NavBarComponent'
+import { Outlet } from 'react-router';
+
 
 
 function App() {
@@ -14,8 +15,7 @@ function App() {
   return (
     <>
       <NavBar/>
-
-      <ListRender/>
+      <Outlet/>
     </>
   )
 }

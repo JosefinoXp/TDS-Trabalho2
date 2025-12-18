@@ -12,6 +12,10 @@
   font-family: 'Poppins', sans-serif;
 }
 
+.padding-top {
+  padding-top: 20px;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

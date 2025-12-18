@@ -11,12 +11,14 @@ import { Link } from 'react-router'
    return (
      <Navbar bg="light" expand="lg" className='fixed-top'>
          <Container>
-             <NavbarBrand href="#home">React-Bootstrap</NavbarBrand>
+             <NavbarBrand as={Link} to ="/">Portfolio Zeh Miller </NavbarBrand>
              <NavbarToggle aria-controls="basic-navbar-nav" />
              <NavbarCollapse id="basic-navbar-nav">
                  <Nav className='me-auto'>
-                     <Nav.Link as={Link} to ="/">Home</Nav.Link>
                      <Nav.Link as={Link} to ="/Contato">Contato</Nav.Link>
+                     <Nav.Link as={Link} to ="/Equipamentos">Equipamentos</Nav.Link>
+                     <Nav.Link as={Link} to ="/Pacotes">Pacotes</Nav.Link>
+                     <Nav.Link as={Link} to ="/Processos_Regras">Processos e Regras</Nav.Link>
                      {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                          <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                          <NavDropdown.Item href="#action/3.2">Anoter Action</NavDropdown.Item>

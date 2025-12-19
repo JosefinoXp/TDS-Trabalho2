@@ -43,7 +43,7 @@ const HomePage = () => {
                     id: index,
                     src: caminho,
                     titulo: `Fotografia #${index + 1}`,
-                    nota: "Clique para ver os detalhes técnicos desta captura.", // Você pode personalizar isso depois
+                    nota: "Título.", // Você pode personalizar isso depois
                     
                     camera: meta?.Model ? `${meta.Make || ''} ${meta.Model}` : "Info não disponível",
                     iso: meta?.ISO || "--",

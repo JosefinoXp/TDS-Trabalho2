@@ -1,7 +1,25 @@
-import React from 'react';
+import {React, useEffect} from 'react';
 
 const ImageDetailModal = ({ imagem, fechar }) => {
     if (!imagem) return null;
+
+    // EVENTO DE TECLADO: useEffect para adicionar o listener global
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            // Verifica se a tecla apertada foi "Escape"
+            if (e.key === 'Escape') {
+                fechar();
+            }
+        };
+
+        // Adiciona o evento quando o modal abre
+        window.addEventListener('keydown', handleKeyDown);
+
+        // Remove o evento quando o modal fecha (Limpeza)
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [fechar]);
 
     return (
         // Fundo escuro fixo

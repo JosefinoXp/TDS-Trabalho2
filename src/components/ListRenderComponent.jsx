@@ -1,14 +1,4 @@
-import {useState} from 'react'
-
-//asset fotos
-import Morning from "/src/assets/P1080257.jpg"
-import Bird from "/src/assets/P1080268.jpg"
-import Bird2 from "/src/assets/P1080328.jpg"
-import Street from "/src/assets/P1080333.jpg"
-
-const ListRender = () => {
-    const [lista] = useState([Morning, Bird, Bird2, Street, Bird, Bird, Bird, Street, Morning, Bird, Bird2
-    ]);
+const ListRender = ({lista}) => {
 
     // queria fazer algo bem parecido com masonry, IA deu isso aqui
 

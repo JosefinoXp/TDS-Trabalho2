@@ -1,8 +1,10 @@
 import React from 'react'
-import { Container, Nav, NavDropdown, NavLink, Navbar } from 'react-bootstrap';
+import { Container, Image, Nav, NavDropdown, NavLink, Navbar } from 'react-bootstrap';
 import NavbarBrand from 'react-bootstrap/NavbarBrand'
 import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse';
 import NavbarToggle from 'react-bootstrap/esm/NavbarToggle';
+
+import Logo from "../assets/JMPortfolio.png"
 
 // routing
 import { Link } from 'react-router'
@@ -11,7 +13,10 @@ import { Link } from 'react-router'
    return (
      <Navbar bg="light" expand="lg" className='fixed-top'>
          <Container>
-             <NavbarBrand as={Link} to ="/">Portfolio Zeh Miller </NavbarBrand>
+             <NavbarBrand as={Link} to ="/">
+                <Image src={Logo} width={30} height={30} className="d-inline-block align-top me-2" />
+                Portfolio Zeh Miller 
+             </NavbarBrand>
              <NavbarToggle aria-controls="basic-navbar-nav" />
              <NavbarCollapse id="basic-navbar-nav">
                  <Nav className='me-auto'>

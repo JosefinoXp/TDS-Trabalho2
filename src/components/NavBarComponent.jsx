@@ -4,7 +4,7 @@ import NavbarBrand from 'react-bootstrap/NavbarBrand'
 import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse';
 import NavbarToggle from 'react-bootstrap/esm/NavbarToggle';
 
-import Logo from "../assets/JMPortfolio.png"
+import Logo from "/JMPortfolio.png"
 
 // routing
 import { Link } from 'react-router'

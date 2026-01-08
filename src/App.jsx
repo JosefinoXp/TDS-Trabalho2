@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import NavBar from './components/NavBarComponent'
 import { Outlet } from 'react-router';
+import MensagemHorario from './hooks/MensagemHorario';
 
 
 
@@ -14,8 +15,9 @@ function App() {
 
   return (
     <>
-      <NavBar/>
-      <Outlet/>
+      {/* <NavBar/> */}
+      <MensagemHorario></MensagemHorario>
+      {/* <Outlet/> */}
     </>
   )
 }

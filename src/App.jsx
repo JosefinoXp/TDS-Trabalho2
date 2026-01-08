@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/NavBarComponent'
 import { Outlet } from 'react-router';
 import MensagemHorario from './hooks/MensagemHorario';
+import FundoDinamico from './hooks/FundoDinamico';
 
 
 
@@ -15,9 +16,11 @@ function App() {
 
   return (
     <>
-      {/* <NavBar/> */}
-      <MensagemHorario></MensagemHorario>
-      {/* <Outlet/> */}
+      <NavBar/>
+
+      <div className={`app-container ${FundoDinamico()}`}>
+        <Outlet/>
+      </div>
     </>
   )
 }

@@ -1,17 +1,18 @@
 import React from 'react'
-import { Container, Image, Nav, NavDropdown, NavLink, Navbar } from 'react-bootstrap';
+import { Container, Image, Nav, Navbar } from 'react-bootstrap';
 import NavbarBrand from 'react-bootstrap/NavbarBrand'
 import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse';
 import NavbarToggle from 'react-bootstrap/esm/NavbarToggle';
-
+import { Link } from 'react-router' // Verifique se sua versão do router usa 'react-router' ou 'react-router-dom'
 import Logo from "/JMPortfolio.png"
 
-// routing
-import { Link } from 'react-router'
+// Importar o CSS Module
+import styles from './NavBarComponent.module.css';
 
- const NavBar = () => {
+const NavBar = () => {
    return (
-     <Navbar bg="light" expand="lg" className='fixed-top'>
+     // Adicionamos a classe do módulo junto com as classes do Bootstrap
+     <Navbar expand="lg" className={`fixed-top ${styles.navbarFixed}`}>
          <Container>
              <NavbarBrand as={Link} to ="/">
                 <Image src={Logo} width={30} height={30} className="d-inline-block align-top me-2" />
@@ -24,18 +25,11 @@ import { Link } from 'react-router'
                      <Nav.Link as={Link} to ="/Equipamentos">Equipamentos</Nav.Link>
                      <Nav.Link as={Link} to ="/Pacotes">Pacotes</Nav.Link>
                      <Nav.Link as={Link} to ="/Processos_Regras">Processos e Regras</Nav.Link>
-                     {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                         <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                         <NavDropdown.Item href="#action/3.2">Anoter Action</NavDropdown.Item>
-                         <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                         <NavDropdown.Divider />
-                         <NavDropdown.Item href="#action/3.4">Separted link</NavDropdown.Item>
-                     </NavDropdown> */}
                  </Nav>
              </NavbarCollapse>
          </Container>
      </Navbar>
    )
- }
+}
 
- export default NavBar
+export default NavBar

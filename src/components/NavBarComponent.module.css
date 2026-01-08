@@ -1,0 +1,11 @@
+/* src/components/NavBarComponent.module.css */
+.navbarFixed {
+    background-color: #f8f9fa !important; /* Cor fixa (cinza claro/branco) */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: background-color 0.3s;
+}
+
+/* Se quiser garantir que os links fiquem legíveis */
+.navbarFixed a {
+    color: #333;
+}

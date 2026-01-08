@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
-import NavBar from "../NavBarComponent"
 import ListRender from "../ListRenderComponent"
 import ImageDetailModal from './ImageDetailModal'
 
 import { useCarregarFotos } from '../../hooks/CarregarImagens'
+
+import MensagemHorario from '../../hooks/MensagemHorario'
 
 // Biblioteca para ler metadados
 import exifr from 'exifr'
@@ -17,7 +18,10 @@ const HomePage = () => {
 
     return (
         <div>
-            <NavBar/>
+            {/* Mensagem inserida no topo da Home */}
+            <div className="text-center mt-5 mb-3">
+                <MensagemHorario />
+            </div>
 
             <div className="container mt-4">
                 {carregando ? (

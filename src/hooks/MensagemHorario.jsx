@@ -11,11 +11,12 @@ const MensagemHorario = () => {
     }, []);
 
     return (
-        <div>
-            {hora.getHours() >= 4 && hora.getHours() <= 12 && <h1> Bom dia!</h1>}
+        <>
+            {hora.getHours() >= 6 && hora.getHours() <= 12 && <h1> Bom dia!</h1>}
             {hora.getHours() >= 13 && hora.getHours() <= 17 && <h1> Boa tarde!</h1>}
-            {hora.getHours() >= 18 && hora.getHours() <= 3 && <h1> Boa noite!</h1>}
-        </div>
+            {hora.getHours() >= 18 && hora.getHours() <= 23 && <h1> Boa noite!</h1>}
+            {hora.getHours() >= 0 && hora.getHours() <= 5 && <h1> Boa madrugada!</h1>}
+        </>
     )
 
 }

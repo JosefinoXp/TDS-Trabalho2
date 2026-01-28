@@ -1,29 +1,36 @@
+import { Container, Table } from 'react-bootstrap';
+
 const PacotesPage = () => {
     return(
-        <div>
-            <table>
-                <tr>
-                    <th>Tipo de Orçamento </th>
-                    <th>Inclui </th>
-                    <th>Localidade de Atendimento </th>
-                </tr>
-                <tr>
-                    <th>Ensaio Pessoal (Externo) </th> 
-                    <th>Sessão de 2 horas, 2 trocas de roupa, 30 fotos digitais tratadas em alta resolução. </th> 
-                    <th>Atendimento em parques e áreas urbanas de Foz do Iguaçu. </th>
-                </tr>
-                <tr>
-                    <th>Ensaio em Estúdio </th>
-                    <th>Sessão de 1h30, uso do fundo infinito e acessórios, 20 fotos digitais tratadas. </th>
-                    <th>Exclusivo em nosso estúdio. </th>
-                </tr>
-                <tr>
-                    <th>Evento Corporativo </th>
-                    <th>Cobertura fotográfica do evento (até 4 horas), entrega rápida de fotos-chave para imprensa, galeria online completa. </th>
-                    <th>Disponibilidade nacional e internacional (sob consulta). </th>
-                </tr>
-            </table>
-        </div>
+        <Container className="mt-5">
+            <h2 className="text-center mb-4">Nossos Pacotes</h2>
+            <Table striped bordered hover responsive className="text-center shadow-sm bg-white">
+                <thead className="table-dark">
+                    <tr>
+                        <th>Tipo de Orçamento</th>
+                        <th>Inclui</th>
+                        <th>Localidade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td className="fw-bold">Ensaio Pessoal (Externo)</td> 
+                        <td>Sessão de 2 horas, 2 trocas de roupa, 30 fotos digitais tratadas.</td> 
+                        <td>Parques e áreas urbanas de Foz do Iguaçu.</td>
+                    </tr>
+                    <tr>
+                        <td className="fw-bold">Ensaio em Estúdio</td>
+                        <td>Sessão de 1h30, fundo infinito, 20 fotos digitais tratadas.</td>
+                        <td>Exclusivo em nosso estúdio.</td>
+                    </tr>
+                    <tr>
+                        <td className="fw-bold">Evento Corporativo</td>
+                        <td>Cobertura (até 4h), entrega rápida para imprensa, galeria online.</td>
+                        <td>Nacional e Internacional (sob consulta).</td>
+                    </tr>
+                </tbody>
+            </Table>
+        </Container>
     )
 }
 

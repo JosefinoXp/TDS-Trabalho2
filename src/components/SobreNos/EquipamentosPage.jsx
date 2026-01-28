@@ -1,16 +1,34 @@
+import { Container, Row, Col, Card } from 'react-bootstrap';
+
 const EquipamentosPage = () => {
     return(
-        <div>
-             <ul>
-                <li>Câmeras mirrorless Full-Frame principais (Ex: Sony A7IV / Canon R6)</li>
-
-                <li>Câmeras mirrorless de backup (sempre levamos equipamento reserva)</li>
-
-                <li>Cartões de memória com slot duplo para backup instantâneo do material</li>
-
-                <li>Notebooks de alta performance para edição e backup em campo</li>
-            </ul>
-        </div>
+        <Container className="mt-5 text-center">
+             <h2 className="mb-4">Nossos Equipamentos</h2>
+             <Row className="justify-content-center">
+                <Col md={6}>
+                    <Card className="mb-3 shadow-sm">
+                        {/* Imagem de exemplo - substitua pelo caminho real se tiver */}
+                        <Card.Img variant="top" src="https://placehold.co/600x400?text=Camera+Mirrorless" />
+                        <Card.Body>
+                            <Card.Title>Câmeras Principais</Card.Title>
+                            <Card.Text>Sony A7IV / Canon R6 (Full-Frame)</Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Col>
+                
+                <Col md={6}>
+                    <Card className="mb-3 shadow-sm">
+                        <Card.Img variant="top" src="https://placehold.co/600x400?text=Backup+e+Edicao" />
+                        <Card.Body>
+                            <Card.Title>Infraestrutura</Card.Title>
+                            <Card.Text>
+                                Backups em tempo real e notebooks de alta performance.
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Col>
+             </Row>
+        </Container>
     )
 }
 

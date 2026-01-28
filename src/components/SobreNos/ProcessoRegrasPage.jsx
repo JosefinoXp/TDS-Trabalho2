@@ -1,20 +1,32 @@
+import { Container } from 'react-bootstrap';
+
 const Processos_RegrasPage = () => {
     return(
-        <div>
-            <ol>
-                <li>Agendamento e Sinal: A data só é considerada reservada após a assinatura do contrato e o pagamento de 50% do valor total (sinal).</li>
-
-                <li>Pontualidade: O tempo do ensaio começa a contar a partir do horário marcado. Atrasos por parte do cliente serão descontados do tempo total da sessão.</li>
-
-                <li>Seleção das Fotos: Para pacotes que incluem seleção, o cliente receberá uma galeria de pré-seleção em até 7 dias úteis.</li>
-
-                <li>Prazo de Entrega: Nossas fotos são tratadas com cuidado individual. O prazo final de entrega do material completo é de 30 dias úteis após a seleção final do cliente.</li>
-
-                <li>Uso de Imagem: Reservamo-nos o direito de utilizar as imagens produzidas em nosso portfólio online (site e redes sociais), exceto quando houver um acordo de confidencialidade assinado previamente.</li>
-
-                <li>Desistência: Em caso de desistência por parte do cliente, o valor do sinal não será reembolsado, conforme contrato (utilizado para cobrir custos de reserva da data).</li>
-            </ol>
-        </div>
+        <Container className="mt-5 d-flex flex-column align-items-center">
+            <h2 className="mb-4">Processos e Regras 📋</h2>
+            <div className="text-start p-4 bg-light rounded shadow-sm" style={{maxWidth: '800px'}}>
+                <ol className="list-group list-group-numbered list-group-flush">
+                    <li className="list-group-item bg-transparent">
+                        📅 <strong>Agendamento:</strong> A data só é reservada após contrato e 50% de sinal.
+                    </li>
+                    <li className="list-group-item bg-transparent">
+                        Pb <strong>Pontualidade:</strong> Atrasos são descontados do tempo total da sessão.
+                    </li>
+                    <li className="list-group-item bg-transparent">
+                        👀 <strong>Seleção:</strong> Galeria de pré-seleção enviada em até 7 dias úteis.
+                    </li>
+                    <li className="list-group-item bg-transparent">
+                        🚀 <strong>Entrega:</strong> Prazo final de 30 dias úteis após a seleção.
+                    </li>
+                    <li className="list-group-item bg-transparent">
+                        📸 <strong>Uso de Imagem:</strong> Podemos usar no portfólio (exceto com acordo de sigilo).
+                    </li>
+                    <li className="list-group-item bg-transparent">
+                        ❌ <strong>Desistência:</strong> O sinal não é reembolsado (custos de reserva).
+                    </li>
+                </ol>
+            </div>
+        </Container>
     )
 }
 

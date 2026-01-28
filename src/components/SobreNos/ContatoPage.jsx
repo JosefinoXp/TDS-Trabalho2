@@ -1,53 +1,100 @@
 import { useState } from "react"
+import { Container, Form, Button, Alert } from 'react-bootstrap';
 
 const ContatoPage = () => {
-    const [inputs, setInputs] = useState({})
+    const [inputs, setInputs] = useState({});
+    const [enviado, setEnviado] = useState(false);
 
-    return (
-        <div>
-            <h1> Entre em contato! </h1>
+    const handleChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+        setInputs(values => ({...values, [name]: value}))
+    }
 
-            <p>Gostou do que viu? Adoraríamos conversar com você e eternizar seus momentos.</p>
-            <p>Para um contato rápido ou para tirar dúvidas, sinta-se à vontade para nos enviar uma mensagem pelo celular: +55 (45) 9999-9999.</p>
-            <p>Se preferir, preencha o formulário abaixo com os detalhes do que você precisa e retornaremos o mais breve possível!</p>
-        
-            <form>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Nome</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        // Simulação de POST usando fetch (pode usar um serviço real como Formspree depois)
+        fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'POST',
+            body: JSON.stringify(inputs),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log("Sucesso:", data);
+            setEnviado(true);
+            alert("Formulário enviado com sucesso! (Simulação)");
+        })
+        .catch((err) => console.error("Erro:", err));
+    }
+
+   return (
+        <Container className="mt-5 text-center" style={{maxWidth: '800px'}}>
+            <h1>Entre em contato!</h1>
+            <p>Gostou do que viu? Adoraríamos conversar com você.</p>
+            
+            {enviado && <Alert variant="success">Mensagem enviada!</Alert>}
+
+            <Form onSubmit={handleSubmit} className="text-start border p-4 rounded shadow-sm bg-light">
+                <Form.Group className="mb-3" controlId="formNome">
+                    <Form.Label>Nome</Form.Label>
+                    <Form.Control type="text" name="nome" onChange={handleChange} placeholder="Seu nome" />
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formEmail">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control type="email" name="email" onChange={handleChange} placeholder="nome@exemplo.com" />
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formEndereco">
+                    <Form.Label>Endereço</Form.Label>
+                    <Form.Control type="text" name="endereco" onChange={handleChange} placeholder="Rua..." />
+                </Form.Group>
+
+                <Form.Label>Interesse em Pacotes:</Form.Label>
+                <div className="mb-3">
+                    <Form.Check 
+                        type="checkbox"
+                        label="Ensaio Pessoal"
+                        name="pacote1"
+                        onChange={handleChange}
+                    />
+                    <Form.Check 
+                        type="checkbox"
+                        label="Ensaio Estúdio"
+                        name="pacote2"
+                        onChange={handleChange}
+                    />
+                    <Form.Check 
+                        type="checkbox"
+                        label="Ensaio Corporativo"
+                        name="pacote3"
+                        onChange={handleChange}
+                    />
                 </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Endereço</label>
-                    <input type="text" class="form-control" id="exampleInputPassword1"/>
-                </div>
-                    <label class="form-label">Pacotes</label>
-                <div>
 
-                <div>
-                    <div>
-                        <label class="form-label">Ensaio Pessoal</label>
-                        <input type="checkbox" id="pacote1" checked={inputs.pacote1}/>
-                    </div>
-                    <div>
-                        <label class="form-label">Ensaio Estúdio</label>
-                        <input type="checkbox" id="pacote2" checked={inputs.pacote2}/>
-                    </div>
-                    <div>
-                        <label class="form-label">Ensaio Corporativo</label>
-                        <input type="checkbox" id="pacote3" checked={inputs.pacote2}/>
-                    </div>
-                </div>
+                <Form.Group className="mb-3" controlId="formArquivo">
+                    <Form.Label>Referências (Opcional - PDF)</Form.Label>
+                    <Form.Control type="file" />
+                </Form.Group>
 
+                <Button variant="primary" type="submit">
+                    Enviar
+                </Button>
+            </Form>
+            
+            {/* Segundo formulário simples como pedido (Ex: Newsletter) */}
+            <div className="mt-5 p-4 bg-secondary text-white rounded">
+                <h4>Newsletter</h4>
+                <p>Receba novidades por email</p>
+                <div className="d-flex gap-2 justify-content-center">
+                    <input type="email" className="form-control w-50" placeholder="Seu melhor email" />
+                    <Button variant="dark">Assinar</Button>
                 </div>
-
-                <p> OPCIONAL: Seria de bom grado mandar em PDF as imagens de referências para a equipe!</p>
-
-                <div class="input-group mb-3">
-                    <input type="file" class="form-control" id="inputGroupFile02"/>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
+            </div>
+        </Container>
     )
 }
 

@@ -1,13 +1,13 @@
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Row, Col, Card } from 'react-bootstrap';
+import './SobreNos.css';
 
 const EquipamentosPage = () => {
     return(
-        <Container className="mt-5 text-center">
-             <h2 className="mb-4">Nossos Equipamentos</h2>
+        <div className="sn-container">
+             <h2 className="sn-title">Nossos Equipamentos</h2>
              <Row className="justify-content-center">
                 <Col md={6}>
-                    <Card className="mb-3 shadow-sm">
-                        {/* Imagem de exemplo - substitua pelo caminho real se tiver */}
+                    <Card className="sn-equip-card">
                         <Card.Img variant="top" src="https://placehold.co/600x400?text=Camera+Mirrorless" />
                         <Card.Body>
                             <Card.Title>Câmeras Principais</Card.Title>
@@ -17,7 +17,7 @@ const EquipamentosPage = () => {
                 </Col>
                 
                 <Col md={6}>
-                    <Card className="mb-3 shadow-sm">
+                    <Card className="sn-equip-card">
                         <Card.Img variant="top" src="https://placehold.co/600x400?text=Backup+e+Edicao" />
                         <Card.Body>
                             <Card.Title>Infraestrutura</Card.Title>
@@ -28,7 +28,7 @@ const EquipamentosPage = () => {
                     </Card>
                 </Col>
              </Row>
-        </Container>
+        </div>
     )
 }
 

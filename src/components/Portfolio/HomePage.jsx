@@ -6,19 +6,15 @@ import { useCarregarFotos } from '../../hooks/CarregarImagens'
 
 import MensagemHorario from '../../hooks/MensagemHorario'
 
-// Biblioteca para ler metadados
 import exifr from 'exifr'
 
 const HomePage = () => {
-    // Estado apenas para controlar o Modal (Visual)
     const [imagemSelecionada, setImagemSelecionada] = useState(null);
 
-    // 2. Use o Hook para pegar os dados
     const { lista, carregando } = useCarregarFotos();
 
     return (
         <div>
-            {/* Mensagem inserida no topo da Home */}
             <div className="text-center mt-5 mb-3">
                 <MensagemHorario />
             </div>
@@ -31,6 +27,7 @@ const HomePage = () => {
                     </div>
                 ) : (
                     <ListRender 
+                        titulo="Galeria de Fotos"
                         lista={lista} 
                         aoClicarNaImagem={(img) => setImagemSelecionada(img)} 
                     />

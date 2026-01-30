@@ -1,10 +1,11 @@
-import { Container, Table } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
+import './SobreNos.css';
 
 const PacotesPage = () => {
     return(
-        <Container className="mt-5">
-            <h2 className="text-center mb-4">Nossos Pacotes</h2>
-            <Table striped bordered hover responsive className="text-center shadow-sm bg-white">
+        <div className="sn-container">
+            <h2 className="sn-title">Nossos Pacotes</h2>
+            <Table striped bordered hover responsive className="sn-table-wrapper">
                 <thead className="table-dark">
                     <tr>
                         <th>Tipo de Orçamento</th>
@@ -30,7 +31,7 @@ const PacotesPage = () => {
                     </tr>
                 </tbody>
             </Table>
-        </Container>
+        </div>
     )
 }
 

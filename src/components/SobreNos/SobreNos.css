@@ -1,0 +1,80 @@
+/* --- Layout Geral (Reutilizável) --- */
+
+/* Container principal para limitar largura e centralizar na tela */
+.sn-container {
+    max-width: 900px;
+    margin: 3rem auto; /* margem vertical e auto horizontal */
+    text-align: center;
+    padding: 0 15px; /* Para não colar na borda em mobile */
+}
+
+/* Títulos das seções */
+.sn-title {
+    margin-bottom: 1.5rem;
+    color: #333;
+    font-weight: 700;
+}
+
+/* Caixa branca padrão (usada no formulário, lista de regras, etc) */
+.sn-card {
+    background-color: #f8f9fa; /* bg-light */
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    padding: 2rem;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075); /* shadow-sm */
+    text-align: left; /* Conteúdo interno alinhado a esquerda */
+}
+
+/* --- Estilos Específicos: Contato --- */
+
+/* Área da Newsletter */
+.sn-newsletter {
+    margin-top: 3rem;
+    padding: 2rem;
+    background-color: #6c757d; /* bg-secondary */
+    color: white;
+    border-radius: 0.375rem;
+}
+
+/* Agrupamento do input + botão da newsletter (substitui d-flex justify-content-center) */
+.sn-newsletter-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.sn-newsletter-input {
+    width: 50%;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.25rem;
+    border: 1px solid #ced4da;
+}
+
+/* --- Estilos Específicos: Equipamentos --- */
+.sn-equip-card {
+    margin-bottom: 1.5rem;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* --- Estilos Específicos: Pacotes --- */
+.sn-table-wrapper {
+    background-color: white;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+}
+
+/* --- Estilos Específicos: Processos e Regras --- */
+.sn-list-group {
+    list-style: none; /* Remove bolinhas padrão se quiser customizar */
+    padding-left: 0;
+}
+
+.sn-list-item {
+    background-color: transparent;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.sn-list-item:last-child {
+    border-bottom: none;
+}

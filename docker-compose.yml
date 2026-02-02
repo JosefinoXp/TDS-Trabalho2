@@ -1,18 +1,14 @@
 services:
   app:
-    # usa o dockerfile que o josé já colocou ali
     build:
       context: .
-      target: build
-    
-    # map da 8080 para 5173 do vite
+      target: dev
+    # Mapeia a porta 8080 do Windows para a 5173 do container
     ports:
       - "8080:5173"
-    
-    # sync dos arquivos locais com o container
+    # Sincroniza os arquivos
     volumes:
       - .:/app
       - /app/node_modules
-    
-    # usa pra rodar o serv de desenvolvimento
+    # Garante que o servidor aceite conexões externas
     command: npm run dev -- --host

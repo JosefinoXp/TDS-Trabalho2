@@ -1,34 +1,25 @@
-# --- Estágio 1: Construção (Build) ---
-# Usa uma imagem do Node para construir o projeto
-FROM node:20-alpine AS build
-
-# Define a pasta de trabalho dentro do container
+# --- Estágio Base (Comum a todos) ---
+FROM node:20-alpine AS base
 WORKDIR /app
-
-# Copia apenas os arquivos de dependência primeiro (para aproveitar o cache do Docker)
-COPY package.json package-lock.json ./
-
-# Instala as bibliotecas DENTRO do container
+COPY package*.json ./
+# Instala dependências
 RUN npm ci
-
-# Copia o restante do código do projeto
+# Copia o código fonte
 COPY . .
 
-# Constrói o projeto (Gera a pasta 'dist')
+# --- Estágio de DESENVOLVIMENTO (Dev) ---
+# É aqui que o docker-compose vai mirar
+FROM base AS dev
+EXPOSE 5173
+CMD ["npm", "run", "dev", "--", "--host"]
+
+# --- Estágio de Construção (Build/Produção) ---
+FROM base AS build
 RUN npm run build
 
-# --- Estágio 2: Servidor (Produção) ---
-# Usa uma imagem leve do Nginx para servir o site
-FROM nginx:alpine
-
-# Copia a configuração do Nginx que criamos
+# --- Estágio Final (Nginx/Produção) ---
+FROM nginx:alpine AS prod
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Copia os arquivos gerados no estágio anterior para a pasta do Nginx
 COPY --from=build /app/dist /usr/share/nginx/html
-
-# Expõe a porta 80
 EXPOSE 80
-
-# Inicia o Nginx
 CMD ["nginx", "-g", "daemon off;"]

@@ -12,12 +12,11 @@ const FundoDinamico = () => {
         } else if (hora >= 13 && hora <= 17) {
         setClasseHorario('bg-tarde');
         } else {
-        setClasseHorario('bg-noite'); // 18h em diante e madrugada
+        setClasseHorario('bg-noite');
         }
     };
 
     atualizarCorFundo();
-    // Atualiza a cada minuto para garantir (opcional)
     const intervalo = setInterval(atualizarCorFundo, 60000);
     return () => clearInterval(intervalo);
   }, []);

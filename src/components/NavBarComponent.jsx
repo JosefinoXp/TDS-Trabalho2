@@ -3,15 +3,12 @@ import { Container, Image, Nav, Navbar } from 'react-bootstrap';
 import NavbarBrand from 'react-bootstrap/NavbarBrand'
 import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse';
 import NavbarToggle from 'react-bootstrap/esm/NavbarToggle';
-import { Link } from 'react-router' // Verifique se sua versão do router usa 'react-router' ou 'react-router-dom'
+import { Link } from 'react-router'
 import Logo from "/JMPortfolio.png"
-
-// Importar o CSS Module
 import styles from './NavBarComponent.module.css';
 
 const NavBar = () => {
    return (
-     // Adicionamos a classe do módulo junto com as classes do Bootstrap
      <Navbar expand="lg" className={`fixed-top ${styles.navbarFixed}`}>
          <Container>
              <NavbarBrand as={Link} to ="/">

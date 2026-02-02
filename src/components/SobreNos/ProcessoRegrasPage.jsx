@@ -4,7 +4,6 @@ const Processos_RegrasPage = () => {
     return(
         <div className="sn-container">
             <h2 className="sn-title">Processos e Regras 📋</h2>
-            {/* Reutilizando a mesma caixa branca do formulário */}
             <div className="sn-card">
                 <ol className="sn-list-group">
                     <li className="sn-list-item">

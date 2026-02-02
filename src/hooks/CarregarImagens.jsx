@@ -8,15 +8,12 @@ export const useCarregarFotos = () => {
     useEffect(() => {
         const carregarImagens = async () => {
             try {
-                // 1. Vite busca todas as imagens na pasta assets
                 const modules = import.meta.glob('/src/assets/*.{jpg,JPG,jpeg}', { eager: true });
                 const caminhos = Object.values(modules).map(mod => mod.default);
 
-                // 2. Processa cada imagem para ler o EXIF
                 const dadosCompletos = await Promise.all(caminhos.map(async (caminho, index) => {
                     let meta = {};
                     try {
-                        // Tenta ler os campos principais do EXIF
                         meta = await exifr.parse(caminho, [
                             'Make', 'Model', 'ISO', 'FNumber', 'ExposureTime', 
                             'FocalLength', 'DateTimeOriginal', 'ExifImageWidth', 'ExifImageHeight'
@@ -25,7 +22,6 @@ export const useCarregarFotos = () => {
                         console.warn("Sem EXIF para:", caminho);
                     }
 
-                    // Formatação da Velocidade (de 0.005 para 1/200)
                     let tempoExposicao = meta?.ExposureTime;
                     if (tempoExposicao && tempoExposicao < 1) {
                         tempoExposicao = `1/${Math.round(1 / tempoExposicao)}`;
@@ -33,7 +29,6 @@ export const useCarregarFotos = () => {
                         tempoExposicao = `${tempoExposicao}"`;
                     }
 
-                    // Retorna o objeto formatado
                     return {
                         id: index,
                         src: caminho,
@@ -61,6 +56,5 @@ export const useCarregarFotos = () => {
         carregarImagens();
     }, []);
 
-    // O Hook retorna as variáveis que a página precisa
     return { lista, carregando };
 };

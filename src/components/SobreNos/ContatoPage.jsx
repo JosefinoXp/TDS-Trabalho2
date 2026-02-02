@@ -1,35 +1,35 @@
 import { useState } from "react"
-import { Container, Form, Button, Alert } from 'react-bootstrap';
-import './SobreNos.css'; // Supondo que você criou o CSS que combinamos
+import { Container, Form, Button, Alert, Spinner } from 'react-bootstrap';
+import './SobreNos.css';
+import useHttp from '../../hooks/useHttp';
 
 const ContatoPage = () => {
     const [inputs, setInputs] = useState({});
     const [enviado, setEnviado] = useState(false);
+    const { loading, error, sendRequest } = useHttp();
 
-    // EVENTO DE FORMULÁRIO 1: onChange (Resolve item 3 - Tipo Evento)
     const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
         setInputs(values => ({...values, [name]: value}))
     }
 
-    // EVENTO DE FORMULÁRIO 2: onSubmit
     const handleSubmit = (event) => {
         event.preventDefault();
-        
-        // REQUISIÇÃO HTTP / FETCH API (Resolve item 1 - Obrigatório)
-        fetch('https://jsonplaceholder.typicode.com/posts', {
-            method: 'POST',
-            body: JSON.stringify(inputs),
-            headers: { 'Content-type': 'application/json; charset=UTF-8' },
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log("Sucesso:", data);
+
+        const aoSucesso = (data) => {
+            console.log("Resposta do servidor:", data);
             setEnviado(true);
-            alert("Enviado com sucesso!");
-        })
-        .catch(err => console.error("Erro:", err));
+            alert("Formulário enviado com sucesso!");
+            setInputs({});
+        }
+        
+        sendRequest(
+            'https://jsonplaceholder.typicode.com/posts', 
+            'POST', 
+            inputs, 
+            aoSucesso
+        );
     }
 
     return (
@@ -37,6 +37,7 @@ const ContatoPage = () => {
             <h1 className="sn-title">Entre em contato!</h1>
             
             {enviado && <Alert variant="success">Mensagem enviada!</Alert>}
+            {error && <Alert variant="danger">{error}</Alert>}
 
             <Form onSubmit={handleSubmit} className="sn-card">
                 <Form.Group className="mb-3">
@@ -73,7 +74,9 @@ const ContatoPage = () => {
                     <Form.Control type="file" />
                 </Form.Group>
 
-                <Button variant="primary" type="submit">Enviar</Button>
+                <Button variant="primary" type="submit" disabled={loading}>
+                    {loading ? <Spinner animation="border" size="sm" /> : "Enviar"}
+                </Button>
             </Form>
         </div>
     )

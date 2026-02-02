@@ -1,29 +1,25 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import ListRender from "../ListRenderComponent"
 import ImageDetailModal from './ImageDetailModal'
-
 import { useCarregarFotos } from '../../hooks/CarregarImagens'
-
 import MensagemHorario from '../../hooks/MensagemHorario'
-
-import exifr from 'exifr'
+import './Portfolio.css'
 
 const HomePage = () => {
     const [imagemSelecionada, setImagemSelecionada] = useState(null);
-
     const { lista, carregando } = useCarregarFotos();
 
     return (
         <div>
-            <div className="text-center mt-5 mb-3">
+            <div className="portfolio-header">
                 <MensagemHorario />
             </div>
 
-            <div className="container mt-4">
+            <div className="portfolio-container">
                 {carregando ? (
-                    <div className="text-center p-5">
+                    <div className="portfolio-loading">
                         <div className="spinner-border text-primary" role="status"></div>
-                        <p className="mt-2">Lendo metadados das imagens...</p>
+                        <p className="loading-text">Lendo metadados das imagens...</p>
                     </div>
                 ) : (
                     <ListRender 
@@ -34,7 +30,6 @@ const HomePage = () => {
                 )}
             </div>
 
-            {/* Renderiza o Modal APENAS se houver uma imagem selecionada */}
             {imagemSelecionada && (
                 <ImageDetailModal 
                     imagem={imagemSelecionada} 

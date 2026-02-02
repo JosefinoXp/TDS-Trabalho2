@@ -8,17 +8,17 @@ const EquipamentosPage = () => {
              <Row className="justify-content-center">
                 <Col md={6}>
                     <Card className="sn-equip-card">
-                        <Card.Img variant="top" src="https://placehold.co/600x400?text=Camera+Mirrorless" />
+                        <Card.Img variant="top" src="../DMC-FZ-60.png" />
                         <Card.Body>
-                            <Card.Title>Câmeras Principais</Card.Title>
-                            <Card.Text>Sony A7IV / Canon R6 (Full-Frame)</Card.Text>
+                            <Card.Title>Câmera Principal</Card.Title>
+                            <Card.Text>Lumix DMC-FZ60</Card.Text>
                         </Card.Body>
                     </Card>
                 </Col>
                 
                 <Col md={6}>
                     <Card className="sn-equip-card">
-                        <Card.Img variant="top" src="https://placehold.co/600x400?text=Backup+e+Edicao" />
+                        <Card.Img variant="top" src="../Server+Notebook.png" />
                         <Card.Body>
                             <Card.Title>Infraestrutura</Card.Title>
                             <Card.Text>
